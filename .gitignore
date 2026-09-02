@@ -1,0 +1,20 @@
+# Binaries
+bin/
+*.exe
+
+# Go build/test artifacts
+*.out
+*.test
+
+# Dependency directories
+vendor/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Local env files
+.env
