@@ -32,7 +32,7 @@ Full motivation in `PROBLEM_STATEMENT.md`.)*
 ## Project Structure
 
 ```
-k8s-custom-autoscaler/
+Kubernetes-Operator/
 ├── cmd/
 │   └── manager/              # main.go — entrypoint for the operator binary
 ├── api/
@@ -72,8 +72,6 @@ k8s-custom-autoscaler/
 *(To be filled in at the end — design trade-offs, what was hard, what would
 be done differently.)*
 
-## Non-Goals / Limitations
+-----
 
-See `PROBLEM_STATEMENT.md` for the full list. Short version: this is a
-learning project run on a local cluster, not a production system, and is
-not a replacement for tools like KEDA.
+See `PROBLEM_STATEMENT.md` for the full list.
