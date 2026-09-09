@@ -6,13 +6,13 @@
 
 ## Phase 1 — Bootstrap Project
 
-- [ ] Initialize Go module (`go.mod`)
-- [ ] Scaffold project structure (cmd/, api/, controllers/, config/)
-- [ ] Add Dockerfile and Makefile skeleton
+- [x] Initialize Go module (`go.mod`)
+- [x] Scaffold project structure (cmd/, api/, controllers/, config/)
+- [x] Add Dockerfile and Makefile skeleton
 
 ## Phase 2 — Define the CRD
 
-- [ ] Define `ScalingPolicy` custom resource type (`api/v1alpha1`)
+- [x] Define `ScalingPolicy` custom resource type (`api/v1alpha1`)
 - [ ] Fields: target Deployment reference, metric source, threshold,
       minReplicas, maxReplicas
 - [ ] Generate CRD YAML manifest (`config/crd`)
