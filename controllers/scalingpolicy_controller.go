@@ -96,13 +96,23 @@ func (r *ScalingPolicyReconciler) Reconcile(ctx context.Context, req ctrl.Reques
 			return ctrl.Result{}, fmt.Errorf("failed to update deployment replicas: %w", err)
 		}
 
+		direction := "up"
+		if desiredReplicas < currentReplicas {
+			direction = "down"
+		}
+		recordScaleEvent(policy.Name, policy.Namespace, direction)
+
 		now := metav1.Now()
 		policy.Status.LastScaleTime = &now
 	}
 
-	// 7. Always refresh status with the latest observed values.
+	// 7. Always refresh status with the latest observed values, and
+	// update our Prometheus gauges to match, whether or not a scale
+	// action happened this cycle — dashboards need continuous data.
 	policy.Status.CurrentReplicas = desiredReplicas
 	policy.Status.LastObservedMetricValue = metricValue
+	recordScalingObservation(policy.Name, policy.Namespace, policy.Spec.TargetDeploymentName,
+		desiredReplicas, metricValue)
 	if err := r.Status().Update(ctx, &policy); err != nil {
 		return ctrl.Result{}, fmt.Errorf("failed to update ScalingPolicy status: %w", err)
 	}
