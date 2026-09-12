@@ -87,3 +87,12 @@ type ScalingPolicyList struct {
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []ScalingPolicy `json:"items"`
 }
+
+func init() {
+	// This is the piece that was missing: SchemeBuilder.Register tells
+	// controller-runtime "these Go types correspond to real Kubernetes
+	// kinds." Without this call, AddToScheme runs successfully but
+	// registers nothing, and the manager fails at startup with
+	// "no kind is registered for the type v1alpha1.ScalingPolicy."
+	SchemeBuilder.Register(&ScalingPolicy{}, &ScalingPolicyList{})
+}
