@@ -1,8 +1,8 @@
 # ---- Build stage ----
-FROM golang:1.22 AS builder
+FROM golang:1.27 AS builder
 WORKDIR /workspace
 
-COPY go.mod go.mod
+COPY go.mod go.sum ./
 RUN go mod download
 
 COPY cmd/ cmd/
