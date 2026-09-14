@@ -11,14 +11,13 @@
 - [x] Add Dockerfile and Makefile skeleton
 
 ## Phase 2 — Define the CRD
-
-- [x] Define `ScalingPolicy` custom resource type (`api/v1alpha1`)
+ 
+- [ ] Define `ScalingPolicy` custom resource type (`api/v1alpha1`)
 - [ ] Fields: target Deployment reference, metric source, threshold,
       minReplicas, maxReplicas
 - [ ] Generate CRD YAML manifest (`config/crd`)
-
 ## Phase 3 — Build the Reconciliation Loop
-
+ 
 - [ ] Scaffold controller (`controllers/scalingpolicy_controller.go`)
 - [ ] Watch `ScalingPolicy` objects and trigger reconcile on change
 - [ ] Fetch current state of target Deployment
@@ -27,21 +26,19 @@
 - [ ] Apply new replica count to target Deployment
 - [ ] Enforce `minReplicas` / `maxReplicas` bounds
 - [ ] Add cooldown logic to prevent rapid scale flapping
-
-## Phase 4 — Observability & Failure Handling
-
-- [ ] Add structured logging for every reconciliation decision
-- [ ] Expose Prometheus metrics (scale events, current replica count,
+## Phase 4 — Observability & Failure Handling (Done)
+ 
+- [x] Add structured logging for every reconciliation decision
+- [x] Expose Prometheus metrics (scale events, current replica count,
       last observed metric value)
-- [ ] Handle failure cases: metric source unreachable, target Deployment
+- [x] Handle failure cases: metric source unreachable, target Deployment
       missing, conflicting updates
-- [ ] Unit tests for reconciliation logic
-
-## Phase 5 — Package & Deploy
-
-- [ ] Build Docker image for the operator
-- [ ] Deploy CRD + operator to a local cluster (Minikube/Kind)
-- [ ] Verify end-to-end: apply a `ScalingPolicy`, simulate metric change,
+- [x] Unit tests for reconciliation logic
+## Phase 5 — Package & Deploy (Done)
+ 
+- [x] Build Docker image for the operator
+- [x] Deploy CRD + operator to a local cluster (Minikube/Kind)
+- [x] Verify end-to-end: apply a `ScalingPolicy`, simulate metric change,
       confirm pod count changes
 - [ ] (Stretch) Helm chart for deployment
 
