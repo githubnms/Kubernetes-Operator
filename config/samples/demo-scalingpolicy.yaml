@@ -1,0 +1,13 @@
+apiVersion: autoscaling.zhero.dev/v1alpha1
+kind: ScalingPolicy
+metadata:
+  name: demo-scalingpolicy
+  namespace: default
+spec:
+  targetDeploymentName: demo-app
+  metricEndpoint: http://mock-metric-server.default.svc.cluster.local/metric.json
+  scaleUpThreshold: 100
+  scaleDownThreshold: 20
+  minReplicas: 1
+  maxReplicas: 5
+  cooldownSeconds: 30

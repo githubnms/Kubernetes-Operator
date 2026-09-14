@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mock-metric-html
+  namespace: default
+data:
+  metric.json: |
+    {"value": 5}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mock-metric-server
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mock-metric-server
+  template:
+    metadata:
+      labels:
+        app: mock-metric-server
+    spec:
+      containers:
+        - name: mock-metric-server
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: metric-volume
+              mountPath: /usr/share/nginx/html/metric.json
+              subPath: metric.json
+      volumes:
+        - name: metric-volume
+          configMap:
+            name: mock-metric-html
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mock-metric-server
+  namespace: default
+spec:
+  selector:
+    app: mock-metric-server
+  ports:
+    - port: 80
+      targetPort: 80
