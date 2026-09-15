@@ -116,17 +116,20 @@ go test ./controllers/... -v
 
 ## Results
  
-- **Scale-up**: mock metric set to 150 (`scaleUpThreshold: 100`). Operator
-  scaled the target Deployment from 1 to 5 replicas over 5 reconcile
-  cycles (~20s apart), correctly holding at `maxReplicas: 5` despite the
-  metric still exceeding the threshold.
-- **Scale-down**: mock metric set to 5 (`scaleDownThreshold: 20`).
-  Operator scaled back down from 5 to 1 replicas over 4 reconcile cycles,
-  correctly holding at `minReplicas: 1`.
-- **Unit tests**: 6/6 passing, covering scale-up, scale-down, no-op
-  within normal range, and boundary enforcement at both `MinReplicas`
-  and `MaxReplicas` under extreme metric values.
-- Full dated log with exact commands and timestamps in `PROGRESS.md`.
+- Scale-up: mock metric set to 150 (scaleUpThreshold: 100). Operator scaled the target Deployment from 1 to 5 replicas over 5 reconcile cycles (~20s apart), correctly holding at maxReplicas: 5 despite the metric still exceeding the threshold.
+
+![scale-up-demo](docs/scale-up-demo.png)
+
+- Scale-down: mock metric set to 5 (scaleDownThreshold: 20). Operator scaled back down from 5 to 1 replicas over 4 reconcile cycles, correctly holding at minReplicas: 1.
+
+![scale-down-demo](docs/scale-down-demo.png)
+
+- Clean startup: operator boots on a real Minikube cluster with no errors, controller and workers start successfully.
+
+![operator-startup-logs](docs/operator-startup-logs.png)
+
+- Unit tests: 6/6 passing, covering scale-up, scale-down, no-op within normal range, and boundary enforcement at both MinReplicas and MaxReplicas under extreme metric values.
+- Full dated log with exact commands and timestamps in PROGRESS.md.
 
 ## What I Learned
 
