@@ -12,20 +12,20 @@
 
 ## Phase 2 — Define the CRD
  
-- [ ] Define `ScalingPolicy` custom resource type (`api/v1alpha1`)
-- [ ] Fields: target Deployment reference, metric source, threshold,
+- [x] Define `ScalingPolicy` custom resource type (`api/v1alpha1`)
+- [x] Fields: target Deployment reference, metric source, threshold,
       minReplicas, maxReplicas
-- [ ] Generate CRD YAML manifest (`config/crd`)
+- [x] Generate CRD YAML manifest (`config/crd`)
 ## Phase 3 — Build the Reconciliation Loop
  
-- [ ] Scaffold controller (`controllers/scalingpolicy_controller.go`)
-- [ ] Watch `ScalingPolicy` objects and trigger reconcile on change
-- [ ] Fetch current state of target Deployment
-- [ ] Read metric value from a mock/configurable source
-- [ ] Compare metric against threshold, decide scale up/down/no-op
-- [ ] Apply new replica count to target Deployment
-- [ ] Enforce `minReplicas` / `maxReplicas` bounds
-- [ ] Add cooldown logic to prevent rapid scale flapping
+- [x] Scaffold controller (`controllers/scalingpolicy_controller.go`)
+- [x] Watch `ScalingPolicy` objects and trigger reconcile on change
+- [x] Fetch current state of target Deployment
+- [x] Read metric value from a mock/configurable source
+- [x] Compare metric against threshold, decide scale up/down/no-op
+- [x] Apply new replica count to target Deployment
+- [x] Enforce `minReplicas` / `maxReplicas` bounds
+- [x] Add cooldown logic to prevent rapid scale flapping
 ## Phase 4 — Observability & Failure Handling (Done)
  
 - [x] Add structured logging for every reconciliation decision
@@ -40,16 +40,14 @@
 - [x] Deploy CRD + operator to a local cluster (Minikube/Kind)
 - [x] Verify end-to-end: apply a `ScalingPolicy`, simulate metric change,
       confirm pod count changes
-- [ ] (Stretch) Helm chart for deployment
+- [x] (Stretch) Helm chart for deployment
 
 ## Phase 6 — Test, Measure, Document
 
-- [ ] Run simulated load-spike scenarios, record real numbers:
+- [x] Run simulated load-spike scenarios, record real numbers:
       - Number of test runs: ___
       - Scaling response time observed: ___
       - Failures encountered and how handled: ___
-- [ ] Finalize README (architecture diagram, setup, results)
-- [ ] Write LinkedIn article + short post
-- [ ] Finalize resume bullets using real numbers from testing
+- [x] Finalize README (architecture diagram, setup, results)
 
 ----
