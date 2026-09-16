@@ -1,6 +1,6 @@
 # Kubernetes Custom Metrics Autoscaler
 
-> Status: In Progress — just started. This README is updated as the
+> Status: V1 Completed — This README is updated as the
 > project develops. See `PROGRESS.md` for the detailed build log and
 > `PROBLEM_STATEMENT.md` for the full scope and motivation.
 
